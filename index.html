@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cornerstone Group — Construction & Real Estate Development</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B87333;
+      --gold-light: #d4956a;
+      --bg: #faf9f7;
+      --bg-secondary: #f3f1ec;
+      --text-primary: #1a1916;
+      --text-secondary: #6b6860;
+      --text-tertiary: #a09d98;
+      --border: rgba(0,0,0,0.1);
+      --border-strong: rgba(0,0,0,0.18);
+      --white: #ffffff;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', 'Helvetica Neue', sans-serif;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap');
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 0.5px solid var(--text-primary);
+      background: var(--text-primary);
+      color: var(--bg);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .nav-cta:hover {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 85vh;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-left {
+      padding: 5rem 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text-primary);
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 1rem;
+    }
+
+    .hero-bottom {
+      margin-top: 3rem;
+    }
+
+    .hero-bottom p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 32px;
+      background: var(--text-primary);
+      color: var(--bg);
+      border: 0.5px solid var(--text-primary);
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 32px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 0.5px solid var(--border-strong);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-primary);
+      border-color: var(--text-primary);
+    }
+
+    .hero-right {
+      background: var(--bg-secondary);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-image-placeholder {
+      flex: 1;
+      background: linear-gradient(160deg, #e8e4dc 0%, #d4cfc5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(0,0,0,0.04) 39px,
+          rgba(0,0,0,0.04) 40px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(0,0,0,0.04) 39px,
+          rgba(0,0,0,0.04) 40px
+        );
+    }
+
+    .hero-image-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 0.5px solid var(--border);
+    }
+
+    .stat {
+      padding: 1.75rem 1.5rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-top: 6px;
+    }
+
+    /* SECTION SHARED */
+    .section {
+      padding: 5rem 3rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 360px;
+      align-self: flex-end;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 0.5px solid var(--border);
+    }
+
+    .service-card {
+      padding: 2.5rem 2rem;
+      border-right: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      transition: background 0.25s;
+    }
+
+    .service-card:hover { background: var(--bg-secondary); }
+    .service-card:nth-child(3n) { border-right: none; }
+    .service-card:nth-last-child(-n+3) { border-bottom: none; }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 0.5px solid var(--border);
+    }
+
+    .project-card {
+      padding: 2.5rem 2.25rem;
+      border-right: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: background 0.25s;
+    }
+
+    .project-card:hover { background: var(--bg-secondary); }
+    .project-card:nth-child(2n) { border-right: none; }
+    .project-card:nth-last-child(-n+2) { border-bottom: none; }
+
+    .project-tag {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .project-card p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    /* ABOUT BAND */
+    .about-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .about-left {
+      padding: 5rem 3rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .about-right {
+      padding: 5rem 3rem;
+      background: var(--bg-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-item {
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .about-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .about-item-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-item-value {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .about-left p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-top: 1.5rem;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .contact-left {
+      padding: 5rem 3rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .contact-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-left > p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 4px;
+    }
+
+    .contact-item p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .contact-right {
+      padding: 5rem 3rem;
+      background: var(--bg-secondary);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 0.5px solid var(--border-strong);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .form-field {
+      position: relative;
+      border-bottom: 0.5px solid var(--border);
+      border-right: 0.5px solid var(--border);
+    }
+
+    .form-field:last-child,
+    .form-field.full-width { border-right: none; }
+
+    .form-field label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      padding: 14px 16px 4px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-primary);
+      padding: 4px 16px 14px;
+      outline: none;
+      resize: none;
+      -webkit-appearance: none;
+    }
+
+    .form-field textarea {
+      height: 120px;
+      padding-top: 8px;
+    }
+
+    .form-submit {
+      padding: 1.25rem 2rem;
+      background: var(--text-primary);
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 400;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.25s;
+    }
+
+    .form-submit:hover { background: #333; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.75rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--text-tertiary);
+    }
+
+    .footer-logo {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    /* DIVIDER */
+    .gold-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.35;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1, .hero-bottom, .hero-label {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-label { animation-delay: 0.1s; }
+    .hero h1 { animation-delay: 0.25s; }
+    .hero-bottom { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Cornerstone<span>.</span>Group</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-cta">Request Consultation</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="hero-label">Est. 1998 &nbsp;&middot;&nbsp; Boston, Massachusetts</div>
+        <h1>Crafting Structures That Stand the Test of Time</h1>
+      </div>
+      <div class="hero-bottom">
+        <p>From ground-breaking construction to transformative real estate development, we deliver projects built on integrity, precision, and lasting value.</p>
+        <div class="hero-actions">
+          <button class="btn-primary">View Our Projects</button>
+          <button class="btn-secondary">Our Services</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-image-placeholder">
+        <span class="hero-image-label">Featured Project Photography</span>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">250+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">26</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$2.4B</div>
+          <div class="stat-label">Total Project Value</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2>Integrated construction<br>& development</h2>
+      </div>
+      <p class="section-desc">We offer a full spectrum of services — from site acquisition and planning through construction management and long-term property development.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <h3>Commercial Construction</h3>
+        <p>Office towers, retail centers, and mixed-use developments delivered on time and to specification.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <h3>Real Estate Development</h3>
+        <p>End-to-end development from land acquisition and feasibility through planning, build, and sale.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <h3>Project Management</h3>
+        <p>Full-service oversight coordinating design, trades, timelines, and budgets with precision.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <h3>Infrastructure Works</h3>
+        <p>Civil and structural infrastructure including roads, utilities, and public-sector builds.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <h3>Residential Development</h3>
+        <p>Bespoke residential communities and luxury homes crafted with exceptional attention to detail.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <h3>Consulting & Advisory</h3>
+        <p>Strategic guidance on feasibility, zoning, cost planning, and investment analysis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2>Selected projects</h2>
+      </div>
+      <p class="section-desc">A selection of landmark projects across commercial, residential, and mixed-use sectors.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-tag">Commercial</div>
+        <h3>Harbor Point Tower</h3>
+        <p>42-storey Class A office tower with a 95,000 sq ft floor plate, LEED Platinum certified. Delivered ahead of schedule.</p>
+        <div class="project-meta">Boston, MA &nbsp;&middot;&nbsp; 2023 &nbsp;&middot;&nbsp; $380M</div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Residential</div>
+        <h3>The Meridian Residences</h3>
+        <p>Luxury waterfront condominium development — 220 units across two towers with a full amenity floor.</p>
+        <div class="project-meta">Cambridge, MA &nbsp;&middot;&nbsp; 2022 &nbsp;&middot;&nbsp; $210M</div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Mixed-Use</div>
+        <h3>Foundry District</h3>
+        <p>Adaptive reuse of a historic industrial site into a vibrant 14-acre mixed-use precinct with retail, office, and 400 residences.</p>
+        <div class="project-meta">Somerville, MA &nbsp;&middot;&nbsp; 2024 &nbsp;&middot;&nbsp; $520M</div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Infrastructure</div>
+        <h3>Route 9 Interchange</h3>
+        <p>Major highway interchange reconstruction including six bridges and 4.2 miles of roadway rehabilitation.</p>
+        <div class="project-meta">Worcester, MA &nbsp;&middot;&nbsp; 2023 &nbsp;&middot;&nbsp; $145M</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-band" id="about">
+    <div class="about-left">
+      <div class="section-label">About Us</div>
+      <h2 style="font-family: var(--font-display); font-size: clamp(28px,3.5vw,44px); font-weight:400; line-height:1.15; color:var(--text-primary);">Built on a foundation of trust & craftsmanship</h2>
+      <p>Founded in Boston in 1998, Cornerstone Group has grown from a regional contractor into one of New England's most respected construction and real estate development firms. Our integrated model means we bring architectural vision, construction expertise, and investment discipline under one roof — delivering better outcomes for clients, communities, and our built environment.</p>
+      <p style="margin-top:1.25rem;">We believe the structures we build are a reflection of our values. Every project, regardless of scale, is approached with the same commitment to quality, transparency, and enduring impact.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-item">
+        <div class="about-item-label">Headquarters</div>
+        <div class="about-item-value">200 State Street, Suite 1400<br>Boston, Massachusetts 02109</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-label">Founded</div>
+        <div class="about-item-value">1998 — 26 Years in Business</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-label">Sectors</div>
+        <div class="about-item-value">Commercial, Residential, Mixed-Use, Infrastructure, Industrial</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-label">Certifications</div>
+        <div class="about-item-value">AGC Member &nbsp;&middot;&nbsp; LEED AP &nbsp;&middot;&nbsp; ISO 9001:2015</div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-label">Operating Region</div>
+        <div class="about-item-value">New England — Boston, Providence, Hartford, Manchester</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-left">
+      <div class="section-label">Get in Touch</div>
+      <h2>Let's build something extraordinary</h2>
+      <p>Whether you have a project in mind or want to explore what's possible, our team is ready to listen and collaborate.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <label>Address</label>
+          <p>200 State Street, Suite 1400<br>Boston, MA 02109</p>
+        </div>
+        <div class="contact-item">
+          <label>Phone</label>
+          <p>(617) 555-0140</p>
+        </div>
+        <div class="contact-item">
+          <label>Email</label>
+          <p>hello@cornerstonegroup.com</p>
+        </div>
+        <div class="contact-item">
+          <label>Office Hours</label>
+          <p>Monday – Friday, 8:00am – 6:00pm EST</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Full Name</label>
+            <input type="text" placeholder="Jane Smith" />
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@company.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Company</label>
+            <input type="text" placeholder="Optional" />
+          </div>
+          <div class="form-field">
+            <label>Project Type</label>
+            <select>
+              <option value="" disabled selected>Select one</option>
+              <option>Commercial Construction</option>
+              <option>Real Estate Development</option>
+              <option>Residential</option>
+              <option>Infrastructure</option>
+              <option>Consulting & Advisory</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field full-width" style="border-right:none;">
+          <label>Project Description</label>
+          <textarea placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+        </div>
+        <button class="form-submit">Send Message &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Cornerstone<span>.</span>Group</div>
+    <p>© 2026 Cornerstone Group. All rights reserved.</p>
+    <p>Boston &nbsp;&middot;&nbsp; Cambridge &nbsp;&middot;&nbsp; Worcester</p>
+  </footer>
+
+</body>
+</html>
